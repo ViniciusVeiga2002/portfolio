@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+canvas {
+    background: #000;
+    display: block;
+}
+
+i {
+    color: white;
+}
+
+.nome_dev{
+    display: flex;
+}
+
+.dev {
+    padding-left: 10px;
+    color: #9B32D9;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000; /* Cor de fundo da navbar */
+    padding: 10px 20px; /* Espaçamento interno */
+}
+
+.navbar-left {
+    color: white; /* Cor do texto */
+    font-size: 24px; /* Tamanho da fonte */
+    display: flex;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right img {
+    width: 40px; /* Ajuste o tamanho da bandeira */
+    height: auto; /* Mantém a proporção da imagem */
+    padding-right: 20px;
+}
+
+.fa-bars {
+    color: white; /* Cor do ícone do menu */
+    font-size: 24px; /* Tamanho do ícone */
+    margin-right: 10px; /* Espaçamento entre o ícone e a imagem */
+}
+
+
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.centered-text h1 {
+    margin: 0;
+    font-size: 5em;
+    user-select: none;
+}
+
+.centered-text h2 {
+    display: flex;
+    margin: 0;
+    font-size: 3em;
+    user-select: none;
+    text-align: center;
+}
+
+.desenvolvedor{
+    display: flex; /* Ativa o flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px; /* Espaçamento entre os elementos (opcional) */
+    flex-wrap: wrap; /* Permite quebra de linha, se necessário */
+    text-align: center; /* Centraliza o texto (se relevante) */
+}
+
+.tipo_desenvolvedor{
+    color: #9B32D9;
+}
