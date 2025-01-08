@@ -1,77 +1,89 @@
-// Seleciona o canvas e o contexto
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+// Seleciona o canvas
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-// Configura o canvas para se ajustar ao tamanho da tela
+// Ajusta o tamanho do canvas para a tela
 function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
-
-// Chama a função ao carregar a página e no evento de redimensionamento
+window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
 
-// Variáveis para animação
-let nodes = [];
-let isPageActive = true;
-let inactivityTimeout;
-const INACTIVITY_LIMIT = 3000; // 3 segundos
+// Define nós e comportamento
+const nodes = [];
+const numNodes = 150;
+const maxDistance = 120;
 
-// Cria nós para animação
-for (let i = 0; i < 50; i++) {
-    nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 5 + 1,
-        dx: (Math.random() - 0.5) * 2,
-        dy: (Math.random() - 0.5) * 2,
-    });
+class Node {
+  constructor(x, y, dx, dy) {
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  update() {
+    if (this.x + this.dx > canvas.width || this.x + this.dx < 0) this.dx = -this.dx;
+    if (this.y + this.dy > canvas.height || this.y + this.dy < 0) this.dy = -this.dy;
+
+    this.x += this.dx;
+    this.y += this.dy;
+  }
 }
 
-// Função de animação
-function animate() {
-    if (!isPageActive) return;
+function initNodes() {
+  nodes.length = 0;
+  for (let i = 0; i < numNodes; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const dx = (Math.random() - 0.5) * 1.5;
+    const dy = (Math.random() - 0.5) * 1.5;
+    nodes.push(new Node(x, y, dx, dy));
+  }
+}
+initNodes();
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function connectNodes() {
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const dx = nodes[i].x - nodes[j].x;
+      const dy = nodes[i].y - nodes[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
 
-    nodes.forEach((node) => {
-        // Desenha o nó
+      if (distance < maxDistance) {
         ctx.beginPath();
-        ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0, 150, 255, 0.7)';
-        ctx.fill();
+        ctx.moveTo(nodes[i].x, nodes[i].y);
+        ctx.lineTo(nodes[j].x, nodes[j].y);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / maxDistance})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
         ctx.closePath();
-
-        // Move o nó
-        node.x += node.dx;
-        node.y += node.dy;
-
-        // Verifica colisões com as bordas
-        if (node.x <= 0 || node.x >= canvas.width) node.dx *= -1;
-        if (node.y <= 0 || node.y >= canvas.height) node.dy *= -1;
-    });
-
-    requestAnimationFrame(animate);
-}
-
-// Gerencia a visibilidade da página
-function handleVisibilityChange() {
-    if (document.hidden) {
-        // Inicia o timer de inatividade
-        inactivityTimeout = setTimeout(() => {
-            isPageActive = false;
-        }, INACTIVITY_LIMIT);
-    } else {
-        // Remove o timer e reativa a página
-        clearTimeout(inactivityTimeout);
-        isPageActive = true;
-        animate();
+      }
     }
+  }
 }
 
-// Event listener para mudança de visibilidade
-document.addEventListener('visibilitychange', handleVisibilityChange);
+// Controle de animação
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  nodes.forEach((node) => {
+    node.update();
+    node.draw();
+  });
+  connectNodes();
+
+  requestAnimationFrame(animate);
+}
 
 // Inicia a animação
 animate();
