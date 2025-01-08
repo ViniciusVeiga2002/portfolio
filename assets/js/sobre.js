@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const dataAtual = new Date();
-    const dataNascimento = new Date('2002-01-08'); // Use o formato ISO para maior confiabilidade
+    const dataNascimento = new Date('2002-01-08');
 
     let idade = dataAtual.getFullYear() - dataNascimento.getFullYear();
     const mesAtual = dataAtual.getMonth();
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const diaAtual = dataAtual.getDate();
     const diaNascimento = dataNascimento.getDate();
 
-    // Verifica se o aniversário deste ano já passou
     if (mesAtual > mesNascimento || (mesAtual === mesNascimento && diaAtual > diaNascimento)) {
         idade--;
     }
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ]
 
 
-    let isBrazilian = localStorage.getItem('language') !== 'en'; // Define idioma inicial com base no localStorage
+    let isBrazilian = localStorage.getItem('language') !== 'en';
 
 
     if (isBrazilian) {

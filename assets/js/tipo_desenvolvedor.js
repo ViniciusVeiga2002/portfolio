@@ -13,6 +13,7 @@ let elemento = document.querySelector('.tipo_desenvolvedor');
 
 // Variável de controle da animação
 let anima = true;
+let animacaoAtiva = false; // Flag para garantir que só tenha uma animação ativa
 
 async function escreverTexto(texto) {
   for (let i = 0; i <= texto.length; i++) {
@@ -39,15 +40,17 @@ function esperar(ms) {
 }
 
 async function iniciarAnimacao() {
+  if (animacaoAtiva) return; // Impede iniciar outra animação enquanto a anterior não termina
+  animacaoAtiva = true; // Marca a animação como ativa
   while (anima) {
     for (const habilidade of habilidades) {
+      if (!anima) break; // Verifica a flag de animação antes de continuar
       await escreverTexto(habilidade);
       await apagarTexto(habilidade);
     }
   }
+  animacaoAtiva = false; // Desmarca a animação após terminar
 }
-
-iniciarAnimacao();
 
 // Função para alternar o idioma
 document.addEventListener('languageChange', (event) => {
@@ -62,11 +65,10 @@ document.addEventListener('languageChange', (event) => {
     elemento = document.querySelector('.tipo_desenvolvedor');
   }
 
-  // Para a animação atual e reinicia com o novo idioma
+  // Para a animação atual
   anima = false;
   setTimeout(() => {
     anima = true;
-    iniciarAnimacao();
-  }, 300); // Tempo para garantir que a animação será reiniciada de forma fluida
+    iniciarAnimacao(); // Inicia a animação com o novo idioma
+  }, 500); // Pausa para garantir que a animação anterior foi parada
 });
-
