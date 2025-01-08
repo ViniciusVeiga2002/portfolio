@@ -14,16 +14,30 @@ document.addEventListener('DOMContentLoaded', function () {
         en: ["HOME", "ABOUT", "SKILLS", "CONTACT"]
     };
 
-    const textoPtEg  = [
-        "Desenvolvedor de softwares, com mais de 2 anos de experiência, onde transformei idéias em soluções digitais eficientes e seguras. Além disso também possuo conhecimento em dados e suas tratativas, transformando o que parece ser invisível em decisões fáceis a serem tomadas, através da análise a apresentação de dashboards. Atualmente, estou cursando Engenharia de Software na faculdade PUCPR - Pontificia Universidade Católica, visando aprofundar ainda mais meus conhecimentos, ter novas redes de contato, e principalmente estar atento a novas técnologias.",
-        "I am a software developer, with more than 2 years of experience, where I transformed ideas into efficient and secure digital solutions. In addition, I also have knowledge of data and its processing, transforming what seems to be invisible into easy decisions to be made, through analysis and presentation of dashboards. I am currently studying Software Engineering at PUCPR - Pontificia Universidade Católica, aiming to further deepen my knowledge, have new contact networks, and above all be aware of new technologies."
+    const dataAtual = new Date();
+    const dataNascimento = new Date('2002-01-08'); // Use o formato ISO para maior confiabilidade
+
+    let idade = dataAtual.getFullYear() - dataNascimento.getFullYear();
+    const mesAtual = dataAtual.getMonth();
+    const mesNascimento = dataNascimento.getMonth();
+    const diaAtual = dataAtual.getDate();
+    const diaNascimento = dataNascimento.getDate();
+
+    // Verifica se o aniversário deste ano já passou
+    if (mesAtual > mesNascimento || (mesAtual === mesNascimento && diaAtual > diaNascimento)) {
+        idade--;
+    }
+
+    const textoPtEg = [
+        `Desenvolvedor de Software com ${idade} anos e mais de 3 anos de experiência, dedicado a transformar ideias em soluções digitais eficientes e seguras. Além de expertise em desenvolvimento de aplicações, possuo experiência em análise de dados e visualização, convertendo informações complexas em insights claros por meio de dashboards interativos e informativos. Atualmente, estou cursando Engenharia de Software na PUCPR (Pontifícia Universidade Católica do Paraná), com previsão de conclusão em 2027. Este curso me permite expandir meu conhecimento técnico, construir uma rede de contatos qualificada e acompanhar de perto as mais recentes inovações tecnológicas.`,
+        `Software Developer, ${idade} years old, with over 3 years of experience, dedicated to turning ideas into efficient and secure digital solutions. In addition to expertise in application development, I have experience in data analysis and visualization, transforming complex information into clear insights through interactive and informative dashboards. I am currently pursuing a Software Engineering degree at PUCPR (Pontifical Catholic University of Paraná), with an expected graduation in 2027. This program allows me to expand my technical knowledge, build a strong professional network, and stay updated on the latest technological innovations.`
     ]
-    
+
 
     let isBrazilian = localStorage.getItem('language') !== 'en'; // Define idioma inicial com base no localStorage
 
 
-    if (isBrazilian){
+    if (isBrazilian) {
         saudacao.innerText = 'Olá, me chamo Vinicius Veiga.'
         texto.innerText = textoPtEg[0]
         sobre.innerText = "Sobre Mim"
@@ -85,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    
+
     menuItems.forEach((item, index) => {
         item.addEventListener('click', function () {
             const pages = ["index.html", "sobre.html", "habilidades.html", "contato.html"];

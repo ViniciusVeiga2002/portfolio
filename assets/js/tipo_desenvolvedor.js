@@ -1,10 +1,10 @@
 let habilidadesPt = [
-  "JavaScript", "PHP", "Criativo", "Java", "React", "Node.js", "Web",
+  "JavaScript", "PHP", "Criativo", "Java", "Python", "React", "Node.js", "Web",
   "Git / GitHub", "TypeScript", "Comunicativo", "DB Relacional", "DB Não Relacional"
 ];
 
 let habilidadesEn = [
-  "JavaScript", "PHP", "Creative", "Java", "React", "Node.js",
+  "JavaScript", "PHP", "Creative", "Java", "Python", "React", "Node.js",
   "Git / GitHub", "TypeScript", "Communicative", "Relational DB", "Non-Relational DB"
 ];
 
