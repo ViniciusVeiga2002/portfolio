@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (menuToggle) {
         menuToggle.addEventListener('click', function () {
-            console.log('chegou');
             if (!menu.classList.contains('active')) {
                 menu.classList.add('active');
                 icon.src = 'icons/close.svg';

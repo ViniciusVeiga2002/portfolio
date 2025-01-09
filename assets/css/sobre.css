@@ -44,34 +44,3 @@ p {
     object-fit: cover;
     border-radius: 50%;
 }
-
-/* ----icones*/
-
-.social-icons a {
-    display: inline-block;
-    width: 40px; /* Ajuste o tamanho dos ícones conforme necessário */
-    height: 40px;
-    transition: transform 0.3s ease, fill 0.3s ease; /* Aplica a transição à tag <a> */
-    padding-right: 10px;
-}
-
-.social-icons a:hover {
-    transform: translateY(-5px);  /* Move o ícone para cima ao passar o mouse */
-}
-
-.social-icons a path {
-    transition: fill 0.3s ease; /* Suaviza a mudança de cor do caminho */
-}
-
-.social-icons a:hover path {
-    fill: #9B32D9; /* Cor roxa no hover */
-}
-
-.centered-icon {
-    position: absolute;
-    top: 92%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 100%;
-}
