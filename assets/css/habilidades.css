@@ -1,28 +1,47 @@
 body {
     margin: 0;
-    overflow: hidden;
     font-family: 'Montserrat', Arial, sans-serif;
     background-color: #000;
     color: white;
 }
 
-h2{
-    color: #9B32D9;;
+h2 {
+    color: #9B32D9;
+    ;
 }
 
-.principal{
-    display: flex;
-    flex-direction: row;
-    height: 80vh; /* Garante o preenchimento total da altura */
+.principal {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    min-height: 80vh;
+    /* Garante o preenchimento total da altura */
     align-items: center;
 }
 
-.habilidadeTexto{
+@media screen and (max-width: 1035px) {
+    .principal {
+        grid-template-columns: 100% !important;
+
+    }
+    .left-section {
+            padding-left: 20px !important;
+    }
+
+    .centered-icon {
+        display: block !important;
+        position: static !important;
+        transform: none !important;
+        margin-bottom: 15px;
+    }
+}
+
+.habilidadeTexto {
     text-align: justify;
     line-height: 1.8
 }
 
-.left-section, .right-section {
+.left-section,
+.right-section {
     width: 50%;
     padding: 20px;
     box-sizing: border-box;
@@ -33,6 +52,7 @@ h2{
     flex-direction: column;
     justify-content: space-between;
     padding-left: 50px;
+    width: 100%;
 }
 
 .left-section .half {
@@ -62,18 +82,22 @@ h2{
 
 .icon-container {
     text-align: center;
-    transition: transform 0.3s ease, color 0.3s ease; /* Adiciona suavidade para a transformação e mudança de cor */
+    transition: transform 0.3s ease, color 0.3s ease;
+    /* Adiciona suavidade para a transformação e mudança de cor */
 }
 
 .icon-container:hover {
-    transform: translateY(-5px); /* Move o ícone para cima ao passar o mouse */
+    transform: translateY(-5px);
+    /* Move o ícone para cima ao passar o mouse */
     color: #9B32D9;
 }
 
 .icon-container svg path {
-    transition: fill 0.3s ease; /* Suaviza a mudança de cor do ícone */
+    transition: fill 0.3s ease;
+    /* Suaviza a mudança de cor do ícone */
 }
 
 .icon-container:hover svg path {
-    fill: #9B32D9; /* Altera a cor do ícone para roxo */
+    fill: #9B32D9;
+    /* Altera a cor do ícone para roxo */
 }

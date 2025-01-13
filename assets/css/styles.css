@@ -54,3 +54,19 @@ i {
 .corDev{
     color: #9B32D9;
 }
+
+@media screen and (max-width: 1035px) {
+
+    body {
+        width: 100%;
+    }
+
+    .centered-text h1 {
+        font-size: 3em;
+    }
+    
+    .centered-text h2 {
+        font-size: 2em;
+    }
+}
+

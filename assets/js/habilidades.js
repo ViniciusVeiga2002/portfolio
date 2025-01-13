@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let isBrazilian = localStorage.getItem('language') !== 'en';
 
     const textoPtEg = [
-        `Tenho experiência em desenvolvimento fullstack, abrangendo linguagens como PHP, Java, JavaScript (incluindo NodeJS, ReactJS e TypeScript) e Python. Minha expertise inclui o uso de bancos de dados relacionais e não relacionais (SQL Server, MySQL e MongoDB), além de metodologias ágeis como SCRUM e ferramentas de versionamento de código (Git e GitHub).`,
-        `I have experience in fullstack development, covering languages ​​such as PHP, Java, JavaScript (including NodeJS, ReactJS and TypeScript) and Python. My expertise includes the use of relational and non-relational databases (SQL Server, MySQL and MongoDB), as well as agile methodologies such as SCRUM and code versioning tools (Git and GitHub).`
+        'Tenho experiência em desenvolvimento fullstack, abrangendo linguagens como PHP, Java, JavaScript (incluindo NodeJS, ReactJS e TypeScript) e Python. Minha expertise inclui o uso de bancos de dados relacionais e não relacionais (SQL Server, MySQL e MongoDB), além de metodologias ágeis como SCRUM e ferramentas de versionamento de código (Git e GitHub).'
+        ,'I have experience in fullstack development, covering languages ​​such as PHP, Java, JavaScript (including NodeJS, ReactJS and TypeScript) and Python. My expertise includes the use of relational and non-relational databases (SQL Server, MySQL and MongoDB), as well as agile methodologies such as SCRUM and code versioning tools (Git and GitHub).'
     ]
 
 
