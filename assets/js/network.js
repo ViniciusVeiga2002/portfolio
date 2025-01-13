@@ -2,7 +2,6 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-// Ajusta o tamanho do canvas para a tela
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -10,7 +9,6 @@ function resizeCanvas() {
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-// Define nós e comportamento
 const nodes = [];
 const numNodes = 150;
 const maxDistance = 120;
@@ -72,7 +70,6 @@ function connectNodes() {
   }
 }
 
-// Controle de animação
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -85,5 +82,4 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-// Inicia a animação
 animate();

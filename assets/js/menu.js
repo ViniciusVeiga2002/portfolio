@@ -7,15 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const desenvolvedor = document.querySelector('.texto_desenvolvedor');
     const menuItems = document.querySelectorAll('.menu-item');
 
-    // Textos do menu em ambos os idiomas
     const menuTexts = {
-        pt: ["INICIO", "SOBRE", "HABILIDADES","CONTATO"],
-        en: ["HOME", "ABOUT", "SKILLS", "CONTACT"]
+        pt: ["INICIO", "SOBRE", "HABILIDADES"],
+        en: ["HOME", "ABOUT", "SKILLS"]
     };
 
-    let isBrazilian = localStorage.getItem('language') !== 'en'; // Define idioma inicial com base no localStorage
+    let isBrazilian = localStorage.getItem('language') !== 'en';
 
-    // Função para atualizar o menu
     function updateMenu(language) {
         const texts = menuTexts[language];
         menuItems.forEach((item, index) => {
@@ -23,34 +21,31 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Função para definir o idioma
     function setLanguage(language) {
         if (language === 'en') {
             languageFlag.src = 'imgs/eua.png';
             languageFlag.alt = 'Bandeira dos EUA';
             desenvolvedor.innerHTML = 'Developer';
-            updateMenu('en'); // Atualiza os itens do menu para inglês
+            updateMenu('en'); 
             let elemento = document.querySelector('.tipo_desenvolvedor');
             elemento.textContent = '';
             document.dispatchEvent(new CustomEvent('languageChange', { detail: { language: 'en' } }));
-            localStorage.setItem('language', 'en'); // Salva a escolha no localStorage
+            localStorage.setItem('language', 'en'); 
         } else {
             languageFlag.src = 'imgs/brasil.jpeg';
             languageFlag.alt = 'Bandeira do Brasil';
             desenvolvedor.innerHTML = 'Desenvolvedor';
-            updateMenu('pt'); // Atualiza os itens do menu para português
+            updateMenu('pt'); 
             let elemento = document.querySelector('.tipo_desenvolvedorEng');
             elemento.textContent = '';
             document.dispatchEvent(new CustomEvent('languageChange', { detail: { language: 'pt' } }));
-            localStorage.setItem('language', 'pt'); // Salva a escolha no localStorage
+            localStorage.setItem('language', 'pt'); 
         }
         isBrazilian = language !== 'en';
     }
 
-    // Configuração inicial do idioma ao carregar a página
     setLanguage(isBrazilian ? 'pt' : 'en');
 
-    // Alternar idioma ao clicar no botão
     languageToggle.addEventListener('click', function () {
         setLanguage(isBrazilian ? 'en' : 'pt');
     });

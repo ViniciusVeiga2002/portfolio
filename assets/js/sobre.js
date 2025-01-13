@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Função para definir o idioma
     function setLanguage(language) {
         if (language === 'en') {
             languageFlag.src = 'imgs/eua.png';
@@ -78,10 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
         isBrazilian = language !== 'en';
     }
 
-    // Configuração inicial do idioma ao carregar a página
     setLanguage(isBrazilian ? 'pt' : 'en');
 
-    // Alternar idioma ao clicar no botão
     languageToggle.addEventListener('click', function () {
         setLanguage(isBrazilian ? 'en' : 'pt');
     });

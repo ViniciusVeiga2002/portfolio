@@ -1,21 +1,21 @@
 .social-icons a {
     display: inline-block;
-    width: 40px; /* Ajuste o tamanho dos ícones conforme necessário */
+    width: 40px;
     height: 40px;
-    transition: transform 0.3s ease, fill 0.3s ease; /* Aplica a transição à tag <a> */
+    transition: transform 0.3s ease, fill 0.3s ease; 
     padding-right: 10px;
 }
 
 .social-icons a:hover {
-    transform: translateY(-5px);  /* Move o ícone para cima ao passar o mouse */
+    transform: translateY(-5px); 
 }
 
 .social-icons a path {
-    transition: fill 0.3s ease; /* Suaviza a mudança de cor do caminho */
+    transition: fill 0.3s ease;
 }
 
 .social-icons a:hover path {
-    fill: #9B32D9; /* Cor roxa no hover */
+    fill: #9B32D9;
 }
 
 .centered-icon {
